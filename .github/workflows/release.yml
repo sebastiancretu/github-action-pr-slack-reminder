@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-${{ env.cache-name }}-
+            ${{ runner.OS }}-
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.15.0
+      - name: Install dependencies
+        run: yarn
+      - name: Package code
+        run: yarn package
+      - name: Commit dist
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: 'Commiting for release'
+      - name: Cut release
+        run: yarn release
