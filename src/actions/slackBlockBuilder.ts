@@ -1,13 +1,14 @@
-import { createUsersToString, getUsersMapping } from '../utils/users-mapping';
-import { MergeableType, PullRequest } from '../types/pulls';
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 import { ChatMeMessageArguments } from '@slack/web-api';
+import formatDistance from 'date-fns/formatDistance';
+
+import { MergeableType, PullRequest } from '../types/pulls';
 import {
   CustomMessageAttachment,
   PullRequestMappingType,
 } from '../types/slack';
-import formatDistance from 'date-fns/formatDistance';
+import { createUsersToString, getUsersMapping } from '../utils/users-mapping';
 
 export const headingSection = (text: string) => {
   return {
@@ -113,7 +114,7 @@ export const buildMessage = async ({
   const partialFullText =
     attachmentsSize > 3000
       ? `Here is a *partial* list with pull requests that await your *feedback*. Please review and merge some of the pull requests <${github.context.serverUrl}/${github.context.repo.owner}/${github.context.repo.repo}/pulls|*here*>.`
-      : 'Here are the pull requests that await your *feedback*';
+      : 'Here are the pull requests that await your *feedback*.';
   const blocks = [
     headingSection(
       `Good morning Team! :sun_with_face:\nIt's that time of the day again! ${partialFullText}`
