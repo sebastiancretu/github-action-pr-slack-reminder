@@ -1,3 +1,11 @@
+## 1.0.0 (2022-10-25)
+
+
+### Bug Fixes
+
+* initial implementation ([41dcb8f](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/41dcb8f229c1263181d28b28146531a813a2f219))
+* solved some linting issues ([43ba608](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/43ba6089921b0ebc2a75d4bb17d5a5c9af4f8a5e))
+
 ## [1.4.0](https://github.com/sebastiancretu/github-action-pr-slack-reminder/compare/v1.3.0...v1.4.0) (2022-10-25)
 
 
