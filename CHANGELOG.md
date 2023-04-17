@@ -1,3 +1,12 @@
+### [1.1.1](https://github.com/sebastiancretu/github-action-pr-slack-reminder/compare/v1.1.0...v1.1.1) (2023-04-17)
+
+
+### Bug Fixes
+
+* errors ([ff61399](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/ff61399f5dbf0f7d9c4ccc0a1e185d03d6fb8905))
+* errors ([73d9102](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/73d9102c49c0e86e0bc47fac62b844de53135f33))
+* random message ([84fe25e](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/84fe25efc08554b440f8c3784eb5c1cb395b332a))
+
 ## [1.1.0](https://github.com/sebastiancretu/github-action-pr-slack-reminder/compare/v1.0.0...v1.1.0) (2023-04-17)
 
 
