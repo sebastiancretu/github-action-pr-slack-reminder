@@ -149,6 +149,8 @@ module.exports = {
     [
       '@semantic-release/github',
       {
+        successComment: false,
+        failTitle: false,
         assets: [
           'CHANGELOG.md',
           'README.md',
