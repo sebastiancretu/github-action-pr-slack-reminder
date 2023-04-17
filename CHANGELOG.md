@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/sebastiancretu/github-action-pr-slack-reminder/compare/v1.0.0...v1.1.0) (2023-04-17)
+
+
+### Features
+
+* added random reviews ([d48112a](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/d48112a4a530707f5e01c0e03f8a7853fd763d97))
+
 ## 1.0.0 (2022-10-25)
 
 
