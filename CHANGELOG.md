@@ -1,3 +1,10 @@
+### [1.1.2](https://github.com/sebastiancretu/github-action-pr-slack-reminder/compare/v1.1.1...v1.1.2) (2023-04-17)
+
+
+### Bug Fixes
+
+* refactoring ([f814fe2](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/f814fe2899315b6e6f67c7fbe6fd538e4c1b465e))
+
 ### [1.1.1](https://github.com/sebastiancretu/github-action-pr-slack-reminder/compare/v1.1.0...v1.1.1) (2023-04-17)
 
 
