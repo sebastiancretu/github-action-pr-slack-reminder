@@ -75,43 +75,34 @@ export const buildMessage = async ({
     key: core.getInput('aws-s3-object-key'),
     region: core.getInput('aws-region'),
   });
-
-  const getRandomMessage = () => {
-    return Math.floor(Math.random() * messages.length);
-  };
-
-  const getPartialFullText = (attachmentsSize: number) => {
-    if (attachmentsSize > 3000) {
-      return `<${github.context.serverUrl}/${github.context.repo.owner}/${github.context.repo.repo}/pulls|*Here*> are a few pull requests that need your review.`;
-    } else {
-      return '';
-    }
-  };
-
-  const buildBlock = (pr: PullRequest, operation: MergeableType) => {
-    const users = createUsersToString({
-      users: pr.assignees.nodes.length
-        ? pr.assignees.nodes.map((user) => user.login)
-        : [pr.author.login],
-      s3UsersMapping: s3UsersMapping.engineers,
-    });
-
-    return buildPullRequestTextBlock({
+  const needReviewBlocks = needReview.flatMap((pr) =>
+    buildPullRequestTextBlock({
       title_link: pr.url,
       title: pr.title,
-      operation,
-      users,
+      operation: MergeableType.REVIEW_NEEDED,
+      users: createUsersToString({
+        users: pr.reviewRequests.nodes.map(
+          (user) => user.requestedReviewer.login
+        ),
+        s3UsersMapping: s3UsersMapping.engineers,
+      }),
       updatedAt: pr.updatedAt,
-    });
-  };
-
-  const needReviewBlocks = needReview.flatMap((pr) =>
-    buildBlock(pr, MergeableType.REVIEW_NEEDED)
+    })
   );
   const readyToMergeBlocks = readyToMerge.flatMap((pr) =>
-    buildBlock(pr, pr.mergeable)
+    buildPullRequestTextBlock({
+      title_link: pr.url,
+      title: pr.title,
+      operation: pr.mergeable,
+      users: createUsersToString({
+        users: !pr.assignees.nodes.length
+          ? [pr.author.login]
+          : pr.assignees.nodes.map((user) => user.login),
+        s3UsersMapping: s3UsersMapping.engineers,
+      }),
+      updatedAt: pr.updatedAt,
+    })
   );
-
   const attachments = [...needReviewBlocks, ...readyToMergeBlocks];
   const attachmentsSize = JSON.stringify(attachments).length;
 
@@ -121,23 +112,21 @@ export const buildMessage = async ({
     attachments.splice(attachments.length - 1, 1);
   }
 
-  const getBlocks = () => {
-    const randomMessage = messages[getRandomMessage()];
-    const partialFullText = getPartialFullText(attachmentsSize);
-    const headingText = `${randomMessage} ${partialFullText}`;
-    const headingSection = {
-      type: 'section',
-      text: { type: 'mrkdwn', text: headingText },
-    };
-    return [headingSection];
-  };
+  const randomMessage = Math.floor(Math.random() * messages.length);
+  const partialFullText =
+    attachmentsSize > 3000
+      ? `<${github.context.serverUrl}/${github.context.repo.owner}/${github.context.repo.repo}/pulls|*Here*> Here are a few pull requests that need your review.`
+      : '';
+  const blocks = [
+    headingSection(`${messages[randomMessage]} ${partialFullText}`),
+  ];
 
   return {
     channel: core.getInput('channel-id'),
     text:
       core.getInput('slack-block-title') ||
       'Pull Request Reminders Notification',
-    blocks: getBlocks(),
+    blocks,
     attachments,
   };
 };
