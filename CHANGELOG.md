@@ -6,6 +6,17 @@
 * errors ([ff61399](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/ff61399f5dbf0f7d9c4ccc0a1e185d03d6fb8905))
 * errors ([73d9102](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/73d9102c49c0e86e0bc47fac62b844de53135f33))
 * random message ([84fe25e](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/84fe25efc08554b440f8c3784eb5c1cb395b332a))
+* remoevd from gitgnore; ([07f5703](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/07f5703952f8ebf1f6923dacf4abb84d926ebba7))
+* remove dist ([124246f](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/124246f5a237c9809439264cb5c9d13538cdf3f6))
+
+### [1.1.1](https://github.com/sebastiancretu/github-action-pr-slack-reminder/compare/v1.1.0...v1.1.1) (2023-04-17)
+
+
+### Bug Fixes
+
+* errors ([ff61399](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/ff61399f5dbf0f7d9c4ccc0a1e185d03d6fb8905))
+* errors ([73d9102](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/73d9102c49c0e86e0bc47fac62b844de53135f33))
+* random message ([84fe25e](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/84fe25efc08554b440f8c3784eb5c1cb395b332a))
 * remove dist ([124246f](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/124246f5a237c9809439264cb5c9d13538cdf3f6))
 
 ### [1.1.1](https://github.com/sebastiancretu/github-action-pr-slack-reminder/compare/v1.1.0...v1.1.1) (2023-04-17)
