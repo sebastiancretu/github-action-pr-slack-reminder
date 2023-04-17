@@ -16,4 +16,3 @@ typings/
 .cache
 .DS_Store
 lib/**/*
-dist
