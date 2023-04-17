@@ -9,6 +9,7 @@ import {
   PullRequestMappingType,
 } from '../types/slack';
 import { createUsersToString, getUsersMapping } from '../utils/users-mapping';
+import { messages } from '../config/review-reminder-text';
 
 export const headingSection = (text: string) => {
   return {
@@ -111,15 +112,11 @@ export const buildMessage = async ({
     attachments.splice(attachments.length - 1, 1);
   }
 
+  const randomMessage = Math.floor(Math.random() * messages.length);
   const partialFullText =
-    attachmentsSize > 3000
-      ? `Here is a *partial* list with pull requests that await your *feedback*. Please review and merge some of the pull requests <${github.context.serverUrl}/${github.context.repo.owner}/${github.context.repo.repo}/pulls|*here*>.`
-      : 'Here are the pull requests that await your *feedback*.';
-  const blocks = [
-    headingSection(
-      `Good morning Team! :sun_with_face:\nIt's that time of the day again! ${partialFullText}`
-    ),
-  ];
+    attachmentsSize > 3000 &&
+    `<${github.context.serverUrl}/${github.context.repo.owner}/${github.context.repo.repo}/pulls|*Here*> Here are a few pull requests that need your review.`;
+  const blocks = [headingSection(`${randomMessage} ${partialFullText}`)];
 
   return {
     channel: core.getInput('channel-id'),
