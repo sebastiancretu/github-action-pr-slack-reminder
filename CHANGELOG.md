@@ -1,3 +1,10 @@
+### [1.1.3](https://github.com/sebastiancretu/github-action-pr-slack-reminder/compare/v1.1.2...v1.1.3) (2023-04-19)
+
+
+### Bug Fixes
+
+* show github username when no mapping ([77f25a8](https://github.com/sebastiancretu/github-action-pr-slack-reminder/commit/77f25a8cf0906c10c68167bd7a45bc50409e79e3))
+
 ### [1.1.2](https://github.com/sebastiancretu/github-action-pr-slack-reminder/compare/v1.1.1...v1.1.2) (2023-04-17)
 
 
