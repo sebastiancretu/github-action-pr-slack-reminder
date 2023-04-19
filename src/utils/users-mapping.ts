@@ -52,7 +52,7 @@ export const createUsersToString = ({
     const slackUserId = s3UsersMapping?.find(
       (config) => config.github_username === user
     )?.slack_id;
-    out.push(`<@${slackUserId}>`);
+    slackUserId ? out.push(`<@${slackUserId}>`) : out.push(user);
     return out;
   }, []);
 
